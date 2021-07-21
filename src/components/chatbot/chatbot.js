@@ -4,10 +4,12 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import axios from "axios";
 import "./chatbot.styles.css";
 import ChatbotHeader from "../chatbot-header/ChatbotHeader";
+import GrapefruitLogo from "../grapefruit-logo/GrapefruitLogo";
+import UserIcon from "../user-icon/UserIcon";
+import TelegramSubmit from "../telegram-submit/TelegramSubmit";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
-  const [showBot, setShowBot] = useState(true);
 
   const handle = useFullScreenHandle();
 
@@ -20,7 +22,8 @@ const Chatbot = () => {
         },
       },
     };
-    setMessages([...messages, says]);
+    console.log(says);
+    messages.push(says);
     const res = await axios.post(
       "https://evening-retreat-02820.herokuapp.com/https://aqueous-dusk-26803.herokuapp.com/api/df_text_query",
       {
@@ -66,7 +69,14 @@ const Chatbot = () => {
     df_event_query("welcome");
   }, []);
 
-  console.log(handle);
+  const handlekeyPress = (e) => {
+    if (e.key === "Enter") {
+      df_text_query(e.target.value);
+
+      e.target.value = "";
+      console.log(e.target.value);
+    }
+  };
 
   return (
     <>
@@ -76,10 +86,32 @@ const Chatbot = () => {
         <div className="chatbot-container">
           <ChatbotHeader />
           <div className="chat-body">
-            <div>Body</div>
+            {messages.map((message, i) => {
+              if (message.speaks === "user") {
+                return (
+                  <div key={i} className="user-bubble-container">
+                    <p className="user-bubble-text">{message.msg.text.text}</p>
+                    <UserIcon />
+                  </div>
+                );
+              }
+              if (message.speaks === "bot") {
+                return (
+                  <div key={i} className="bot-bubble-container">
+                    <GrapefruitLogo />
+                    <p className="bot-bubble-text">{message.msg.text.text}</p>
+                  </div>
+                );
+              }
+            })}
           </div>
           <div className="user-input">
-            <input className="text-input" placeholder="Say Something..." />
+            <input
+              className="text-input"
+              placeholder="Say Something..."
+              onKeyPress={handlekeyPress}
+            />
+            <TelegramSubmit />
           </div>
         </div>
       </FullScreen>

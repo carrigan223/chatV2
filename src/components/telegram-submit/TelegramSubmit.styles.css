@@ -1,10 +1,10 @@
-.grapefruit-logo {
+.submit-logo {
   height: 25px;
   width: 20px;
 }
 
-.grapefruit-container {
-  border: 2px solid darkblue;
+.submit-container {
+  border: 2px solid orange;
   border-radius: 100%;
   background: white;
   width: 49px;
@@ -14,4 +14,8 @@
   align-items: center;
   box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.733);
   margin: 15px;
+}
+
+.submit-container:hover {
+    box-shadow: 2px 5px 30px darkblue;
 }

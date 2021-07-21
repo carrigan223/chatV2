@@ -10,7 +10,53 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
+  padding: 30px;
+}
+
+.bot-bubble-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-bubble-container {
+  display: flex;
+  align-items: center;
+}
+
+.bot-bubble-text {
+  border: 2px solid darkblue;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 13px;
+  width: relative;
+  box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.733);
+}
+
+.user-bubble-text {
+  border: 2px solid orange;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 13px;
+  width: relative;
+  box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.733);
+  margin-left: auto;
+}
+
+.user-input {
+  padding: 20px 5vw;
+  display: flex;
+  align-items: center;
 }
 
 .text-input {
+  width: 100%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid darkblue;
+  font-size: 1.25rem;
+}
+
+.text-input::placeholder {
+  color: rgba(139, 90, 0, 0.644);
 }

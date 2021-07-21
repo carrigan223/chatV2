@@ -4,7 +4,9 @@ import "./GrapefruitLogo.styles.css";
 
 const GrapefruitLogo = () => {
   return (
-    <img src={Grapefruit} alt="grapefruit logo" className="grapefruit-logo" />
+    <div className="grapefruit-container">
+      <img src={Grapefruit} alt="grapefruit logo" className="grapefruit-logo" />
+    </div>
   );
 };
 
